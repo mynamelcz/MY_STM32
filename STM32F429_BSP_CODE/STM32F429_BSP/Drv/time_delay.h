@@ -33,14 +33,16 @@ typedef struct{
 
 
 #define __IRQ_HdlTypedef(fun, times) 	   	\
-Tirq_hd_t fun##irq = {			  			\
+Tirq_hd_t fun##_irq_t = {			  			\
 	 .time  = times,					   	\
 	 .cnt   = 0,						   	\
 	 .hdl_fun = fun,          			   	\
-	 .list = LIST_HEAD_INIT(fun##irq.list) 	\
+	 .list = LIST_HEAD_INIT(fun##_irq_t.list) 	\
 }
 
-#define T_IRQ_Hdl(fun)	    	   &(fun##irq)	
+
+#define T_IRQ_Hdl(fun)	    	   &(fun##_irq_t)	
+#define declareT_IRQ_Hdl(fun)	   extern Tirq_hd_t (fun##_irq_t)
 
 void timer_loop_init(void);	
 void timer_loop_callback(void);

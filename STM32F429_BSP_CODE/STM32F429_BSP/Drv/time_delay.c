@@ -1,5 +1,6 @@
 #include "time_delay.h"
 #include "bsp_timer.h"
+#include "bsp_nvic.h"
 #include "stdlib.h"
 
 /**************************************************************
@@ -15,9 +16,9 @@ LIST_HEAD(TIM_IRQHandler_ListHead);
 	
 void register_timer_handler(Tirq_hd_t *hd_t)
 {	
-	BSP_TimerDrv.close(LOOP_FUN_TIMER_INDEX);
+	BSP_TIM_DRV.close(LOOP_FUN_TIMER_INDEX);
 	list_add_tail(&hd_t->list, &TIM_IRQHandler_ListHead);	
-	BSP_TimerDrv.open(LOOP_FUN_TIMER_INDEX);	
+	BSP_TIM_DRV.open(LOOP_FUN_TIMER_INDEX);	
 }	
 	
 void register_timer_handler_malloc(void(*fun)(void), u32 time)
@@ -37,7 +38,7 @@ void register_timer_handler_malloc(void(*fun)(void), u32 time)
 void unregister_timer_handler(void(*fun)(void))
 {
 	Tirq_hd_t *pos = NULL;
-	BSP_TimerDrv.close(LOOP_FUN_TIMER_INDEX);
+	BSP_TIM_DRV.close(LOOP_FUN_TIMER_INDEX);
 	list_for_each_entry(Tirq_hd_t, pos, &TIM_IRQHandler_ListHead, list)
 	{
 		if(pos->hdl_fun == fun){	
@@ -47,7 +48,7 @@ void unregister_timer_handler(void(*fun)(void))
 	}
 	free(pos);
 	pos = NULL;
-	BSP_TimerDrv.open(LOOP_FUN_TIMER_INDEX);
+	BSP_TIM_DRV.open(LOOP_FUN_TIMER_INDEX);
 }	
 
 
@@ -75,17 +76,23 @@ static void loop_timer_fun_list(struct list_head *head)
 
 void timer_loop_callback(void)
 {
-	loop_timer_fun_list(&TIM_IRQHandler_ListHead);
+    if(BSP_TIM_DRV.get_it_status(LOOP_FUN_TIMER_INDEX,TIM_IT_UPDATE))
+    {
+        BSP_TIM_DRV.clear_it_flag(LOOP_FUN_TIMER_INDEX,TIM_IT_UPDATE);
+    	loop_timer_fun_list(&TIM_IRQHandler_ListHead);
+
+    }
 }
 
 
 
 void timer_loop_init(void)
 {
-	BSP_TimerDrv.init(LOOP_FUN_TIMER_INDEX);
-	BSP_TimerDrv.init_irq(LOOP_FUN_TIMER_INDEX,1, 1);
-	BSP_TimerDrv.open_irq(LOOP_FUN_TIMER_INDEX, TIM_IT_Update);
-	BSP_TimerDrv.open(LOOP_FUN_TIMER_INDEX);
+	BSP_TIM_DRV.init(LOOP_FUN_TIMER_INDEX);    
+	BSP_TIM_DRV.enable_it(LOOP_FUN_TIMER_INDEX, TIM_IT_UPDATE);
+    BSP_NVIC_DRV.attach_fun(TIM7_IRQn,timer_loop_callback);
+    BSP_NVIC_DRV.enable_irq(TIM7_IRQn,1,3);
+	BSP_TIM_DRV.open(LOOP_FUN_TIMER_INDEX);
 }
 
 

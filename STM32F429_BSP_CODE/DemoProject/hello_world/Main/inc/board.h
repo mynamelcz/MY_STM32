@@ -19,12 +19,6 @@
 #define BSP_USING_UART6	
 
 
-//#define BSP_USING_SPI1	
-#define BSP_USING_SPI2	
-//#define BSP_USING_SPI3
-
-
-
 #define BSP_USING_TIME1
 #define BSP_USING_TIME2
 #define BSP_USING_TIME3
@@ -43,10 +37,17 @@
 
 
 
+#define LOOP_FUN_TIMER_INDEX    TIME7_INDEX
+
 #ifdef BSP_USING_TIME2
 #define DELAY_TIMER_INDEX		TIME2_INDEX
 #define DELAY_TIMER				TIM2
 #endif
+
+
+//#define BSP_USING_SPI1	
+#define BSP_USING_SPI2	
+//#define BSP_USING_SPI3
 
 
 //#define BSP_USING_DMA1_CH0

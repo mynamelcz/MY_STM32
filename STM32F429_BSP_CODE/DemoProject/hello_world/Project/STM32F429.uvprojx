@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,USE_FULL_LL_DRIVER,STM32F429xx</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\..\STM32F429_BSP\STM32_HAL\STM32F4xx_HAL_Driver\Inc;..\..\..\STM32F429_BSP\STM32_HAL\STM32F4xx_HAL_Driver\Inc\Legacy;..\..\..\STM32F429_BSP\STM32_HAL\CMSIS\Include;..\..\..\STM32F429_BSP\Lib\common\inc;..\..\..\STM32F429_BSP\Lib\CALC;..\..\..\STM32F429_BSP\Drv;..\..\..\STM32F429_BSP\Bsp\inc;..\bsp_cfg;..\Main\inc</IncludePath>
+              <IncludePath>..\..\..\STM32F429_BSP\STM32_HAL\STM32F4xx_HAL_Driver\Inc;..\..\..\STM32F429_BSP\STM32_HAL\STM32F4xx_HAL_Driver\Inc\Legacy;..\..\..\STM32F429_BSP\STM32_HAL\CMSIS\Include;..\..\..\STM32F429_BSP\Lib\common\inc;..\..\..\STM32F429_BSP\Lib\CALC;..\..\..\STM32F429_BSP\Drv;..\..\..\STM32F429_BSP\Bsp\inc;..\bsp_cfg;..\Main\inc;..\DEV\key</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -482,6 +482,13 @@
         </Group>
         <Group>
           <GroupName>Dev</GroupName>
+          <Files>
+            <File>
+              <FileName>key.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\DEV\key\key.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>Lib</GroupName>
@@ -495,6 +502,11 @@
               <FileName>common.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\STM32F429_BSP\Lib\common\src\common.c</FilePath>
+            </File>
+            <File>
+              <FileName>key_dec.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\STM32F429_BSP\Lib\common\src\key_dec.c</FilePath>
             </File>
           </Files>
         </Group>

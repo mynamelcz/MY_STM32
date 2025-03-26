@@ -4,9 +4,11 @@
 #include "bsp_gpio.h"
 #include "bsp_uart.h"
 #include "bsp_sys.h"
+#include "bsp_nvic.h"
 
 #include "time_delay.h"
 
+#include "key.h"
 
 #include "stm32f4xx_ll_rcc.h"
 struct pin_band TRIG1_BAND;
@@ -22,8 +24,9 @@ void sys_periph_init(void)
     LED0(1);
     LED1(1);
 
-    BSP_GPIO_DRV.pin_mode(KEY0_PIN, PIN_Mode_Out_PP, PIN_NoPull, 0);
-    BSP_GPIO_DRV.pin_mode(KEY1_PIN, PIN_Mode_Out_PP, PIN_NoPull, 0);
+    BSP_GPIO_DRV.pin_mode(KEY0_PIN, PIN_Mode_IN, PIN_PullUp, 0);
+    BSP_GPIO_DRV.pin_mode(KEY1_PIN, PIN_Mode_IN, PIN_PullUp, 0);
+    BSP_GPIO_DRV.pin_mode(KEY2_PIN, PIN_Mode_IN, PIN_PullUp, 0);
 
     /* UART */
     BSP_GPIO_DRV.pin_mode(UART1_TX_PIN, PIN_Mode_AF_PP, PIN_PullUp, GPIO_AF7_USART1);
@@ -52,12 +55,15 @@ void getClocks(void)//²âÊÔ³ÌÐò
 int main(void)
 {
     BSP_Sys.init();
+
     TimeDelay.init(180);
     BSP_GPIO_DRV.hw_init();
+    BSP_NVIC_DRV.init();
     sys_periph_init();
 
-
     LOG_D(">>>>>>>>>>	Power On	<<<<<<<<<<<\n");
+    timer_loop_init();
+    init_key_detect();
     getClocks();
     while(1)
     {

@@ -555,7 +555,7 @@
     {                                                               \
         .Instance = TIM7,                                           \
 		.BScfg = {													\
-			.Prescaler = 0,							  		        \
+			.Prescaler = 80-1,							  		    \
 			.CounterMode = LL_TIM_COUNTERMODE_UP,     				\
 			.Autoreload = 1000-1,    	     						\
 			.ClockDivision =  LL_TIM_CLOCKDIVISION_DIV1,          	\
