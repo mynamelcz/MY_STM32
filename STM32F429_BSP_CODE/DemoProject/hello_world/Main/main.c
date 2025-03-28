@@ -11,8 +11,13 @@
 #include "key.h"
 
 #include "stm32f4xx_ll_rcc.h"
-struct pin_band TRIG1_BAND;
 
+void key_0_irq(void)
+{
+    LOG_D("key irq\n");
+}
+
+struct pin_band TRIG1_BAND;
 void sys_periph_init(void)
 {
     /*init tirg pin*/
@@ -27,6 +32,10 @@ void sys_periph_init(void)
     BSP_GPIO_DRV.pin_mode(KEY0_PIN, PIN_Mode_IN, PIN_PullUp, 0);
     BSP_GPIO_DRV.pin_mode(KEY1_PIN, PIN_Mode_IN, PIN_PullUp, 0);
     BSP_GPIO_DRV.pin_mode(KEY2_PIN, PIN_Mode_IN, PIN_PullUp, 0);
+
+    
+    BSP_GPIO_DRV.pin_mode(KEYUP_PIN, PIN_Mode_IT_RISING, PIN_PullUp, 0);
+    BSP_GPIO_DRV.pin_irq_enable(KEYUP_PIN,key_0_irq);
 
     /* UART */
     BSP_GPIO_DRV.pin_mode(UART1_TX_PIN, PIN_Mode_AF_PP, PIN_PullUp, GPIO_AF7_USART1);

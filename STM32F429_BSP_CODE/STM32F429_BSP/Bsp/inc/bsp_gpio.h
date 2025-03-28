@@ -77,12 +77,8 @@ struct pin_band{
 #define PinInMode(band)			do{MEM_ADDR(band.MODER) = 0; MEM_ADDR(band.MODER + 4) = 0;}while(0)
 #define PinOutMode(band)		do{MEM_ADDR(band.MODER) = 1; MEM_ADDR(band.MODER + 4) = 0;}while(0)
 
+typedef void (*irq_fun_t)(void);
 
-struct rt_pin_irq_hdr
-{
-    void (*hdr)(void *args);
-    void             *args;
-};
 
 
 struct __bsp_gpio_drv{
@@ -93,6 +89,10 @@ struct __bsp_gpio_drv{
 	void(*pin_write)(GPIO_TypeDef *gpio,u8 pin_num, u8 value);
 	void(*pin_tol)(GPIO_TypeDef *gpio,u8 pin_num);
 	int (*pin_get_bitband)(GPIO_TypeDef *gpio,u8 pin_num, struct pin_band *band);
+    
+    
+    void (*pin_irq_enable)(GPIO_TypeDef *gpio,u8 pin_num, void (*hdr)(void));
+    void (*pin_irq_disable)(GPIO_TypeDef *gpio,u8 pin_num);
 };
 
 extern const struct __bsp_gpio_drv	BSP_GPIO_DRV;
