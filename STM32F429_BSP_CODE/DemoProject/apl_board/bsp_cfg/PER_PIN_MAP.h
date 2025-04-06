@@ -324,4 +324,214 @@
 #define I2C3_SMBA_PIN		GET_PIN(B,12)
 #define I2C3_SCL_PIN		GET_PIN(B,10)
 #define I2C3_SDA_PIN		GET_PIN(C,9)
+
+
+
+/*============	FMC 	=============
+FMC_A0            PF0
+FMC_A1            PF1
+FMC_A2            PF2
+FMC_A3            PF3
+FMC_A4            PF4
+FMC_A5            PF5
+FMC_A6            PF12
+FMC_A7            PF13
+FMC_A8            PF14
+FMC_A9            PF15
+FMC_A10           PG0
+FMC_A11           PG1
+FMC_A12           PG2
+FMC_A13           PG3
+FMC_A14           PG4
+FMC_BA0           PG4
+FMC_A15           PG5
+FMC_BA1           PG5
+FMC_A16           PD11
+FMC_A17           PD12
+FMC_A18           PD13
+FMC_A19           PE3
+FMC_A20           PE4
+FMC_A21           PE5
+FMC_A22           PE6
+FMC_A23           PE2
+FMC_A24           PG13
+FMC_A25           PG14
+
+FMC_D0            PD14
+FMC_D1            PD15
+FMC_D2            PD0
+FMC_D3            PD1
+FMC_D4            PE7
+FMC_D5            PE8
+FMC_D6            PE9
+FMC_D7            PE10
+FMC_D8            PE11
+FMC_D9            PE12
+FMC_D10           PE13
+FMC_D11           PE14
+FMC_D12           PE15
+FMC_D13           PD8
+FMC_D14           PD9
+FMC_D15           PD10
+FMC_D16           PH8
+FMC_D17           PH9
+FMC_D18           PH10
+FMC_D19           PH11
+FMC_D20           PH12
+FMC_D21           PH13
+FMC_D22           PH14
+FMC_D23           PH15
+FMC_D24           PI0
+FMC_D25           PI1
+FMC_D26           PI2
+FMC_D27           PI3
+FMC_D28           PI6
+FMC_D29           PI7
+FMC_D30           PI9
+FMC_D31           PI10
+
+FMC_NBL0          PE0
+FMC_NBL1          PE1
+FMC_NBL2          PI4
+FMC_NBL3          PI5
+
+FMC_CLK           PD3
+FMC_SDCLK         PG8
+FMC_SDCKE0        PC3   PH2  PH7
+FMC_SDCKE1        PB5
+
+FMC_NE1           PD7
+FMC_NCE2          PD7
+FMC_NE2           PG9
+FMC_NCE3          PG9
+FMC_NCE4_1        PG10
+FMC_NE3           PG10
+FMC_NCE4_2        PG11
+FMC_NE4           PG12
+FMC_SDNE0         PC2   PH3
+FMC_SDNE1         PB6   PH6
+
+FMC_NOE           PD4
+FMC_NWE           PD5
+FMC_NWAIT         PD6
+FMC_NL            PB7
+FMC_SDNWE         PC0   PH5
+FMC_SDNRAS        PF11
+FMC_SDNCAS        PG15
+FMC_NIORD         PF6
+FMC_NREG          PF7
+FMC_NIOWR         PF8
+FMC_CD            PF9
+FMC_INTR          PF10
+FMC_INT2          PG6
+FMC_INT3          PG7
+====================================
+*/
+#define FMC_A0_PIN        GET_PIN(F, 0)  
+#define FMC_A1_PIN        GET_PIN(F, 1)  
+#define FMC_A2_PIN        GET_PIN(F, 2)  
+#define FMC_A3_PIN        GET_PIN(F, 3)  
+#define FMC_A4_PIN        GET_PIN(F, 4)  
+#define FMC_A5_PIN        GET_PIN(F, 5)  
+#define FMC_A6_PIN        GET_PIN(F, 12) 
+#define FMC_A7_PIN        GET_PIN(F, 13) 
+#define FMC_A8_PIN        GET_PIN(F, 14) 
+#define FMC_A9_PIN        GET_PIN(F, 15) 
+#define FMC_A10_PIN       GET_PIN(G, 0)  
+#define FMC_A11_PIN       GET_PIN(G, 1)  
+#define FMC_A12_PIN       GET_PIN(G, 2)  
+#define FMC_A13_PIN       GET_PIN(G, 3)  
+#define FMC_A14_PIN       GET_PIN(G, 4)  
+#define FMC_BA0_PIN       GET_PIN(G, 4)  
+#define FMC_A15_PIN       GET_PIN(G, 5)  
+#define FMC_BA1_PIN       GET_PIN(G, 5)  
+#define FMC_A16_PIN       GET_PIN(D, 11) 
+#define FMC_A17_PIN       GET_PIN(D, 12) 
+#define FMC_A18_PIN       GET_PIN(D, 13) 
+#define FMC_A19_PIN       GET_PIN(E, 3)  
+#define FMC_A20_PIN       GET_PIN(E, 4)  
+#define FMC_A21_PIN       GET_PIN(E, 5)  
+#define FMC_A22_PIN       GET_PIN(E, 6)  
+#define FMC_A23_PIN       GET_PIN(E, 2)  
+#define FMC_A24_PIN       GET_PIN(G, 13) 
+#define FMC_A25_PIN       GET_PIN(G, 14) 
+
+#define FMC_D0_PIN        GET_PIN(D, 14) 
+#define FMC_D1_PIN        GET_PIN(D, 15) 
+#define FMC_D2_PIN        GET_PIN(D, 0)  
+#define FMC_D3_PIN        GET_PIN(D, 1)  
+#define FMC_D4_PIN        GET_PIN(E, 7)  
+#define FMC_D5_PIN        GET_PIN(E, 8)  
+#define FMC_D6_PIN        GET_PIN(E, 9)  
+#define FMC_D7_PIN        GET_PIN(E, 10) 
+#define FMC_D8_PIN        GET_PIN(E, 11) 
+#define FMC_D9_PIN        GET_PIN(E, 12) 
+#define FMC_D10_PIN       GET_PIN(E, 13) 
+#define FMC_D11_PIN       GET_PIN(E, 14) 
+#define FMC_D12_PIN       GET_PIN(E, 15) 
+#define FMC_D13_PIN       GET_PIN(D, 8)  
+#define FMC_D14_PIN       GET_PIN(D, 9)  
+#define FMC_D15_PIN       GET_PIN(D, 10) 
+#define FMC_D16_PIN       GET_PIN(H, 8)  
+#define FMC_D17_PIN       GET_PIN(H, 9)  
+#define FMC_D18_PIN       GET_PIN(H, 10) 
+#define FMC_D19_PIN       GET_PIN(H, 11) 
+#define FMC_D20_PIN       GET_PIN(H, 12) 
+#define FMC_D21_PIN       GET_PIN(H, 13) 
+#define FMC_D22_PIN       GET_PIN(H, 14) 
+#define FMC_D23_PIN       GET_PIN(H, 15) 
+#define FMC_D24_PIN       GET_PIN(I, 0)  
+#define FMC_D25_PIN       GET_PIN(I, 1)  
+#define FMC_D26_PIN       GET_PIN(I, 2)  
+#define FMC_D27_PIN       GET_PIN(I, 3)  
+#define FMC_D28_PIN       GET_PIN(I, 6)  
+#define FMC_D29_PIN       GET_PIN(I, 7)  
+#define FMC_D30_PIN       GET_PIN(I, 9)  
+#define FMC_D31_PIN       GET_PIN(I, 10) 
+
+#define FMC_NBL0_PIN      GET_PIN(E, 0)  
+#define FMC_NBL1_PIN      GET_PIN(E, 1)  
+#define FMC_NBL2_PIN      GET_PIN(I, 4)  
+#define FMC_NBL3_PIN      GET_PIN(I, 5)  
+
+#define FMC_CLK_PIN       GET_PIN(D, 3)  
+#define FMC_SDCLK_PIN     GET_PIN(G, 8)  
+#define FMC_SDCKE0_PIN    GET_PIN(C, 3)  
+#define FMC_SDCKE1_PIN    GET_PIN(B, 5)  
+
+#define FMC_NE1_PIN       GET_PIN(D, 7)  
+#define FMC_NCE2_PIN      GET_PIN(D, 7)  
+#define FMC_NE2_PIN       GET_PIN(G, 9)  
+#define FMC_NCE3_PIN      GET_PIN(G, 9)  
+#define FMC_NCE4_1_PIN    GET_PIN(G, 10) 
+#define FMC_NE3_PIN       GET_PIN(G, 10) 
+#define FMC_NCE4_2_PIN    GET_PIN(G, 11) 
+#define FMC_NE4_PIN       GET_PIN(G, 12) 
+#define FMC_SDNE0_PIN     GET_PIN(C, 2)  
+#define FMC_SDNE1_PIN     GET_PIN(B, 6)  
+
+#define FMC_NOE_PIN       GET_PIN(D, 4)  
+#define FMC_NWE_PIN       GET_PIN(D, 5)  
+#define FMC_NWAIT_PIN     GET_PIN(D, 6)  
+#define FMC_NL_PIN        GET_PIN(B, 7)  
+#define FMC_SDNWE_PIN     GET_PIN(C, 0)  
+#define FMC_SDNRAS_PIN    GET_PIN(F, 11) 
+#define FMC_SDNCAS_PIN    GET_PIN(G, 15) 
+#define FMC_NIORD_PIN     GET_PIN(F, 6)  
+#define FMC_NREG_PIN      GET_PIN(F, 7)  
+#define FMC_NIOWR_PIN     GET_PIN(F, 8)  
+#define FMC_CD_PIN        GET_PIN(F, 9)  
+#define FMC_INTR_PIN      GET_PIN(F, 10) 
+#define FMC_INT2_PIN      GET_PIN(G, 6)  
+#define FMC_INT3_PIN      GET_PIN(G, 7)  
+
+
+
+
+
 #endif
+
+
+
+
+

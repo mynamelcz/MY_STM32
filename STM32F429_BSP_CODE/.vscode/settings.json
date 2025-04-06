@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "bsp_fmc.h": "c",
+        "time_delay.h": "c",
+        "tft_lcd.h": "c"
+    }
+}

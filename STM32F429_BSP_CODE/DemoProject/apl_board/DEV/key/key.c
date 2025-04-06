@@ -6,7 +6,7 @@
 
 int touch_key(void)
 {
-    int cnt = 0;
+    volatile int cnt = 0;
     TOUCH_KEY_IN_MODE();
     while(TOUCH_KEY_R()==0)
     {

@@ -9,7 +9,8 @@
 #include "time_delay.h"
 
 #include "key.h"
-
+#include "lcd.h"
+#include "sdram.h"
 #include "stm32f4xx_ll_rcc.h"
 
 void key_0_irq(void)
@@ -50,7 +51,7 @@ void sys_periph_init(void)
 
 }
 
-void getClocks(void)//���Գ���
+void getClocks(void)
 {
     LL_RCC_ClocksTypeDef RCC_Clocks;
     LL_RCC_GetSystemClocksFreq(&RCC_Clocks);
@@ -63,14 +64,50 @@ void getClocks(void)//���Գ���
 
 
 
+/**
+ * @brief       SDRAM内存测试
+ * @param       x,y    :起点坐标
+ * @retval      无
+*/
+void sdram_test(uint16_t x, uint16_t y)
+{  
+    uint32_t i = 0;
+    uint32_t temp = 0;
+    uint32_t sval = 0;       /* 在地址0读到的数据 */
+
+    /* 每隔16K字节,写入一个数据,总共写入2048个数据,刚好是32M字节 */
+    for (i = 0; i < 32 * 1024 * 1024; i += 16 * 1024)
+    {
+        *(volatile uint32_t *)(SDRAM_ADDR + i) = temp; 
+        temp++;
+    }
+
+    /* 依次读出之前写入的数据,进行校验 */
+    for (i = 0; i < 32 * 1024 * 1024; i += 16 * 1024) 
+    {
+        temp =*(volatile uint32_t*)(SDRAM_ADDR + i);
+
+        if (i == 0)
+        {
+            sval = temp;
+        }
+        else if (temp <= sval)
+        {
+            break;         /* 后面读出的数据一定要比第一次读到的数据大 */
+        }
+
+        
+        lcd_printf(x,y,ST7789_FONT_24,BLACK,"%d\n",(uint16_t)(temp - sval + 1) * 16);
+     //   printf("SDRAM Capacity:%dKB\r\n", (uint16_t)(temp - sval + 1) * 16);           /* 打印SDRAM容量 */
+    }
+}
 
 
 
-
+extern void lcd_test(void);
 
 int main(void)
 {
-    u32 cnt = 0;
     BSP_Sys.init();
     TimeDelay.init(180);
     BSP_GPIO_DRV.hw_init();
@@ -82,10 +119,12 @@ int main(void)
     init_key_detect();
     getClocks();
     
+    lcd_init();
+    sdram_init();
     
-    
-    
-    
+    lcd_backlight(1);
+    lcd_clear(BACKGROUND_COLOR);
+    sdram_test(30, 170); 
     while(1)
     {
       

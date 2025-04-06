@@ -1,0 +1,5 @@
+--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\..\..\STM32F429_BSP\STM32_HAL\STM32F4xx_HAL_Driver\Inc -I ..\..\..\STM32F429_BSP\STM32_HAL\STM32F4xx_HAL_Driver\Inc\Legacy -I ..\..\..\STM32F429_BSP\STM32_HAL\CMSIS\Include -I ..\..\..\STM32F429_BSP\Lib\common\inc -I ..\..\..\STM32F429_BSP\Lib\CALC -I ..\..\..\STM32F429_BSP\Bsp\inc -I ..\bsp_cfg -I ..\Main\inc
+-I.\RTE\_STM32F429
+-IF:\Keil_v5\ARM\CMSIS\Include
+-D__UVISION_VERSION="530" -DSTM32F429xx -D_RTE_ -DUSE_HAL_DRIVER -DUSE_FULL_LL_DRIVER -DSTM32F429xx
+-o .\objects\stm32f4xx_hal.o --omf_browse .\objects\stm32f4xx_hal.crf --depend .\objects\stm32f4xx_hal.d --feedback ".\Objects\STM32F429.fed" "..\..\..\STM32F429_BSP\STM32_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c"

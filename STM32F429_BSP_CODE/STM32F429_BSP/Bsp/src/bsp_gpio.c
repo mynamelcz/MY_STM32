@@ -276,7 +276,6 @@ const struct __bsp_gpio_drv BSP_GPIO_DRV =
     .pin_write = stm32_pin_write,
     .pin_tol = stm32_pin_tol,
     .pin_get_bitband = stm32_get_pin_bitband_addr,
-
     .pin_irq_enable = stm32_pin_irq_enable,
     .pin_irq_disable = stm32_pin_irq_disable,
 };
