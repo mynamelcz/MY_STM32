@@ -1553,7 +1553,6 @@ void st7789_show_char(st7789_handle_t* handle, uint16_t x, uint16_t y, uint8_t c
             }
         }
     }
-
 }
 
 /**

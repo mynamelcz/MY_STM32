@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,USE_FULL_LL_DRIVER,STM32F429xx</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\..\STM32F429_BSP\STM32_HAL\STM32F4xx_HAL_Driver\Inc;..\..\..\STM32F429_BSP\STM32_HAL\STM32F4xx_HAL_Driver\Inc\Legacy;..\..\..\STM32F429_BSP\STM32_HAL\CMSIS\Include;..\..\..\STM32F429_BSP\Lib\common\inc;..\..\..\STM32F429_BSP\Lib\CALC;..\..\..\STM32F429_BSP\Drv;..\..\..\STM32F429_BSP\Bsp\inc;..\bsp_cfg;..\Main\inc;..\DEV\key;..\DEV\TFTLCD;..\Driver\ST7789;..\DEV\SDRAM</IncludePath>
+              <IncludePath>..\..\..\STM32F429_BSP\STM32_HAL\STM32F4xx_HAL_Driver\Inc;..\..\..\STM32F429_BSP\STM32_HAL\STM32F4xx_HAL_Driver\Inc\Legacy;..\..\..\STM32F429_BSP\STM32_HAL\CMSIS\Include;..\..\..\STM32F429_BSP\Lib\common\inc;..\..\..\STM32F429_BSP\Lib\CALC;..\..\..\STM32F429_BSP\Drv;..\..\..\STM32F429_BSP\Bsp\inc;..\bsp_cfg;..\Main\inc;..\DEV\key;..\DEV\TFTLCD;..\Driver\ST7789;..\DEV\SDRAM;..\Driver\IIC;..\DEV\EEPROM</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -473,6 +473,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\STM32F429_BSP\Bsp\src\bsp_fmc.c</FilePath>
             </File>
+            <File>
+              <FileName>bsp_ltdc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\STM32F429_BSP\Bsp\src\bsp_ltdc.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -488,6 +493,11 @@
               <FileType>1</FileType>
               <FilePath>..\Driver\ST7789\st7789_drv.c</FilePath>
             </File>
+            <File>
+              <FileName>soft_iic_drv.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Driver\IIC\soft_iic_drv.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -499,14 +509,34 @@
               <FilePath>..\DEV\key\key.c</FilePath>
             </File>
             <File>
-              <FileName>lcd.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\DEV\TFTLCD\lcd.c</FilePath>
-            </File>
-            <File>
               <FileName>sdram.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\DEV\SDRAM\sdram.c</FilePath>
+            </File>
+            <File>
+              <FileName>mcu_lcd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\DEV\TFTLCD\mcu_lcd.c</FilePath>
+            </File>
+            <File>
+              <FileName>rgb_lcd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\DEV\TFTLCD\rgb_lcd.c</FilePath>
+            </File>
+            <File>
+              <FileName>touch_capacitive.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\DEV\TFTLCD\touch_capacitive.c</FilePath>
+            </File>
+            <File>
+              <FileName>touch_resistive.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\DEV\TFTLCD\touch_resistive.c</FilePath>
+            </File>
+            <File>
+              <FileName>eeprom.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\DEV\EEPROM\eeprom.c</FilePath>
             </File>
           </Files>
         </Group>

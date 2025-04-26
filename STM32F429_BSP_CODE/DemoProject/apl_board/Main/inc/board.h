@@ -122,9 +122,15 @@ extern struct pin_band TOUCHKEY_BAND;
 #define TOUCH_KEY_R()           PinRead(TOUCHKEY_BAND)
 #define TOUCH_KEY(x)            PinWrite(TOUCHKEY_BAND,x)
 
+/*********************  IIC BUS **************************/
+#define IIC_SCL_PIN     GET_PIN(H,4)
+#define IIC_SDA_PIN     GET_PIN(H,5)
 
-
-
+#define IIC_SCL(x)		    BSP_GPIO_DRV.pin_write(IIC_SCL_PIN,x)
+#define IIC_SDA(x)		    BSP_GPIO_DRV.pin_write(IIC_SDA_PIN,x)
+#define IIC_SDA_R()         BSP_GPIO_DRV.pin_read(IIC_SDA_PIN)
+#define IIC_SDA_OUT_MODE()	BSP_GPIO_DRV.pin_mode(IIC_SDA_PIN, PIN_Mode_Out_PP, PIN_NoPull, 0)
+#define IIC_SDA_IN_MODE()	BSP_GPIO_DRV.pin_mode(IIC_SDA_PIN, PIN_Mode_IN, PIN_PullUp, 0)
 
 
 

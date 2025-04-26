@@ -1,4 +1,5 @@
 #include "includes.h"
+#include "stm32f4xx_ll_rcc.h"
 
 #include "stm32f4xx.h"
 #include "bsp_gpio.h"
@@ -9,9 +10,12 @@
 #include "time_delay.h"
 
 #include "key.h"
-#include "lcd.h"
+#include "mcu_lcd.h"
+#include "rgb_lcd.h"
 #include "sdram.h"
-#include "stm32f4xx_ll_rcc.h"
+#include "eeprom.h"
+#include "touch_resistive.h"
+
 
 void key_0_irq(void)
 {
@@ -20,6 +24,7 @@ void key_0_irq(void)
 
 struct pin_band TRIG1_BAND;
 struct pin_band TOUCHKEY_BAND;
+
 
 void sys_periph_init(void)
 {
@@ -43,6 +48,10 @@ void sys_periph_init(void)
     
     BSP_GPIO_DRV.pin_mode(KEYUP_PIN, PIN_Mode_IT_RISING, PIN_PullUp, 0);
     BSP_GPIO_DRV.pin_irq_enable(KEYUP_PIN,key_0_irq);
+
+    /* IIC */
+    BSP_GPIO_DRV.pin_mode(IIC_SCL_PIN, PIN_Mode_Out_PP, PIN_NoPull, 0);
+    BSP_GPIO_DRV.pin_mode(IIC_SDA_PIN, PIN_Mode_Out_PP, PIN_NoPull, 0);
 
     /* UART */
     BSP_GPIO_DRV.pin_mode(UART1_TX_PIN, PIN_Mode_AF_PP, PIN_PullUp, GPIO_AF7_USART1);
@@ -97,14 +106,16 @@ void sdram_test(uint16_t x, uint16_t y)
         }
 
         
-        lcd_printf(x,y,ST7789_FONT_24,BLACK,"%d\n",(uint16_t)(temp - sval + 1) * 16);
+        lcd_printf(x,y,ST7789_FONT_24,BLACK,"SIZE:%d\n",(uint16_t)(temp - sval + 1) * 16);
      //   printf("SDRAM Capacity:%dKB\r\n", (uint16_t)(temp - sval + 1) * 16);           /* 打印SDRAM容量 */
     }
 }
 
 
-
+extern void rgb_lcd_test(void);
 extern void lcd_test(void);
+extern void eep_test(void);
+extern void touch_test(void);
 
 int main(void)
 {
@@ -119,12 +130,14 @@ int main(void)
     init_key_detect();
     getClocks();
     
-    lcd_init();
-    sdram_init();
-    
-    lcd_backlight(1);
-    lcd_clear(BACKGROUND_COLOR);
-    sdram_test(30, 170); 
+   // lcd_init();
+   // sdram_init();
+   // lcd_backlight(1);
+   // lcd_clear(BACKGROUND_COLOR);
+    //sdram_test(30, 170); 
+    //eep_test();
+    //touch_test();
+    rgb_lcd_test();
     while(1)
     {
       

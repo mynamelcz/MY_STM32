@@ -12,10 +12,10 @@
 
 
 #define KEY_FILTER_TIME     5       //按键消抖时间
-#define KEY_LONG_TIME       450     //按键长按时间
+#define KEY_LONG_TIME       250     //按键长按时间
 #define KEY_REPEAT_TIME     100     //长按事件触发间隔
 #define KEY_DOUBLE_MIN      100     //双击最小时间间隔 
-#define KEY_DOUBLE_MAX      300     //双击最大时间间隔
+#define KEY_DOUBLE_MAX      150     //双击最大时间间隔
 
 
 typedef enum _key_msg
